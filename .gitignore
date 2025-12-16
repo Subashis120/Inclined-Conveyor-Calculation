@@ -41,3 +41,11 @@ app-example
 # generated native folders
 /ios
 /android
+
+.expo-shared/
+android/
+ios/
+dist/
+build/
+.env
+.env.*
