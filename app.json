@@ -4,7 +4,7 @@
     "slug": "Dimension",
     "version": "1.1.1",
     "orientation": "portrait",
-    "icon": "./assets/images/logo.png",
+    "icon": "./assets/images/company-logo.png",
     "scheme": "dimension",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,

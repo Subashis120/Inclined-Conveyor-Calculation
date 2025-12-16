@@ -95,18 +95,18 @@ export default function HomeScreen() {
                     
                   </View>
                 ),
-                headerRight: () => (
-                  <Image
-                    source={require("@/assets/images/logo.png")}
-                    style={{
-                      width: 50,
-                      height: 30,
-                      borderRadius: 20,
-                      marginRight: 2, // spacing from edge
-                    }}
-                    resizeMode="contain"
-                  />
-                ),
+                // headerRight: () => (
+                //   <Image
+                //     source={require("@/assets/images/logo.png")}
+                //     style={{
+                //       width: 50,
+                //       height: 30,
+                //       borderRadius: 20,
+                //       marginRight: 2, // spacing from edge
+                //     }}
+                //     resizeMode="contain"
+                //   />
+                // ),
               }}
             />
             <View
