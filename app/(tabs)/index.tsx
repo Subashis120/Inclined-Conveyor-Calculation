@@ -1,25 +1,19 @@
 import {
   View,
   Text,
-  Button,
-  useColorScheme,
   StyleSheet,
-  TextInput,
-  Alert,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
   Keyboard,
   Image,
 } from "react-native";
-import { Link, Stack } from "expo-router";
-import { useTheme } from "@react-navigation/native";
+import { Stack } from "expo-router";
 import { useEffect, useState } from "react";
 import FormScreen from "@/components/custom/FormScreen";
 import { LinearGradient } from "expo-linear-gradient";
 
 export default function HomeScreen() {
-  const { colors } = useTheme();
 
   const [keyboardHeight, setKeyboardHeight] = useState(0);
 
@@ -50,8 +44,6 @@ export default function HomeScreen() {
           keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 0}
         >
           <ScrollView
-            // contentContainerStyle={{ paddingBottom: 10 }}
-            // showsVerticalScrollIndicator={false}
             contentContainerStyle={{
               paddingBottom: keyboardHeight > 0 ? keyboardHeight * 0.35 : 20, // smart padding
             }}
@@ -94,19 +86,7 @@ export default function HomeScreen() {
                     </Text>
                     
                   </View>
-                ),
-                // headerRight: () => (
-                //   <Image
-                //     source={require("@/assets/images/logo.png")}
-                //     style={{
-                //       width: 50,
-                //       height: 30,
-                //       borderRadius: 20,
-                //       marginRight: 2, // spacing from edge
-                //     }}
-                //     resizeMode="contain"
-                //   />
-                // ),
+                )
               }}
             />
             <View
@@ -124,7 +104,7 @@ export default function HomeScreen() {
                   fontWeight: 700,
                 }}
               >
-                Inclined Conveyor Calculation Desk
+                Inclined Conveyor Parameter Calculation
               </Text>
 
               <FormScreen />

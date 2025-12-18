@@ -21,11 +21,11 @@ export const calculateResult = (form: any) => {
   const totalPull = beltpull + gravityPull;
   const reqdPower = totalPull * beltTravel;
   const result = reqdPower / 4573.1;
-  const pos = result * 1.5;
+  const pos = result * 1.3;
 
   const map = {
-    "Revolution (m) ": revolution.toFixed(3),
-    "Belt Travel (m/min) ": beltTravel.toFixed(3),
+    "Linear Travel Of Drive Pulley (m) ": revolution.toFixed(3),
+    "Linear Speed (m/min) ": beltTravel.toFixed(3),
     "Material In 1m Of Belt (kg/min) ": materialIn1mOfBelt.toFixed(3),
     "Material Weight In Belt (kg) ": materialWeightInBelt.toFixed(3),
     "Belt Weight (kg) ": beltWeight.toFixed(3),
@@ -33,8 +33,8 @@ export const calculateResult = (form: any) => {
     "Belt Pull (kg) ": beltpull.toFixed(3),
     "Gravity Pull (kg) ": gravityPull.toFixed(3),
     "Total Pull (kg) ": totalPull.toFixed(3),
-    "Required Power (kg m/min) ": reqdPower.toFixed(3),
-    "Factor": pos.toFixed(3),
+    "Calculated HP (kg m/min) ": reqdPower.toFixed(3),
+    "Motor Power With FOS": pos.toFixed(3),
     "Final HP": getFinalHp(pos),
   };
 

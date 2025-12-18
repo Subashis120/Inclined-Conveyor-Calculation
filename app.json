@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Dimension",
+    "name": "Conveyor",
     "slug": "Dimension",
     "version": "1.1.1",
     "orientation": "portrait",
@@ -14,9 +14,9 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+        "foregroundImage": "./assets/images/company-logo.png",
+        "backgroundImage": "./assets/images/company-logo.png",
+        "monochromeImage": "./assets/images/company-logo.png"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,

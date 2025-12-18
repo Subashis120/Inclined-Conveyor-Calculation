@@ -14,9 +14,18 @@ import * as Print from "expo-print";
 import * as Sharing from "expo-sharing";
 import { useTheme } from "@react-navigation/native";
 import { Stack } from "expo-router";
-import {logoBase64} from "../../components/utils/Base64.js";
+import { logoBase64 } from "../../components/utils/Base64.js";
 
 const screenWidth = Dimensions.get("window").width;
+
+const KEY_LABELS = {
+  diameter: "Drive Roller Dia",
+  ratio: "Gear Ratio",
+  length: "Centre Distance",
+  thickness: "Belt Thickness",
+  width: "Belt Width",
+  friction: "Friction Co-efficient",
+};
 
 export default function Result() {
   const params = useLocalSearchParams();
@@ -38,7 +47,7 @@ export default function Result() {
   }
 
   const inputEntries = Object.entries(inputData);
-  const rows = chunkArray(inputEntries, 4);
+  const rows = chunkArray(inputEntries, 3);
 
   const Row = ({ children }) => (
     <View style={{ flexDirection: "row", gap: 12, marginBottom: 20 }}>
@@ -47,8 +56,10 @@ export default function Result() {
   );
 
   const Col = ({ label, children }) => (
-    <View style={{ flex: 2 }}>
-      <Text style={{ marginBottom: 6, fontWeight: "600", color: "white" }}>
+    <View style={{ flex: 1, minHeight:44, justifyContent:"flex-end" }}>
+      <Text
+        style={{ marginBottom: 6, fontWeight: "600", color: "white" }}
+      >
         {label}
       </Text>
       {children}
@@ -128,7 +139,7 @@ export default function Result() {
             .map(
               ([k, v]) => `
                 <tr>
-                  <td class="col-key">${k}</td>
+                  <td class="col-key">${setKey(k)}</td>
                   <td class="col-value">${v ?? "—"}</td>
                 </tr>`
             )
@@ -170,7 +181,7 @@ export default function Result() {
           headerStyle: {
             backgroundColor: "rgb(15, 32, 39)",
           },
-          statusBarStyle:"light",
+          statusBarStyle: "light",
           headerTintColor: "white",
           headerShadowVisible: false, // remove bottom border
           headerTitle: () => (
@@ -179,7 +190,7 @@ export default function Result() {
                 flexDirection: "row",
                 alignItems: "center",
                 gap: 12,
-                marginLeft: -20
+                marginLeft: -20,
               }}
             >
               <Image
@@ -188,7 +199,6 @@ export default function Result() {
                   width: 40,
                   height: 40,
                   borderRadius: 6, // optional for rounded icon look
-                  
                 }}
                 resizeMode="contain"
               />
@@ -222,7 +232,7 @@ export default function Result() {
             fontWeight: "700",
             marginBottom: 20,
             color: "white",
-            textAlign:"center"
+            textAlign: "center",
           }}
         >
           Input Values
@@ -231,7 +241,7 @@ export default function Result() {
         {rows.map((group, idx) => (
           <Row key={idx}>
             {group.map(([key, valueInput]) => (
-              <Col key={key} label={key}>
+              <Col key={key} label={setKey(key)}>
                 <TextInput
                   value={String(valueInput)}
                   editable={false} // disabled
@@ -243,7 +253,7 @@ export default function Result() {
                     borderRadius: 8,
                     paddingTop: 8,
                     paddingBottom: 8,
-                    paddingLeft:10,
+                    paddingLeft: 10,
                     width: 70,
                     backgroundColor: "rgba(255,255,255,0.05)",
                   }}
@@ -261,13 +271,13 @@ export default function Result() {
 
       {/* TABLE */}
       <View style={styles.tableCard}>
-      <Text
+        <Text
           style={{
             fontSize: 18,
             fontWeight: "700",
             marginBottom: 14,
             color: "white",
-            textAlign:"center"
+            textAlign: "center",
           }}
         >
           Output Data
@@ -332,7 +342,7 @@ export default function Result() {
       </TouchableOpacity>
 
       {/* Pie Chart */}
-      <Text
+      {/* <Text
         style={{
           fontSize: 20,
           fontWeight: "700",
@@ -343,9 +353,9 @@ export default function Result() {
         }}
       >
         🥧 Pie Chart
-      </Text>
+      </Text> */}
 
-      <PieChart
+      {/* <PieChart
         data={numericEntries.map((e, i) => ({
           name: e.key,
           population: e.value,
@@ -369,7 +379,7 @@ export default function Result() {
         backgroundColor="transparent"
         paddingLeft="20"
         absolute
-      />
+      /> */}
     </ScrollView>
   );
 }
@@ -493,6 +503,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     alignItems: "center",
     marginTop: 10,
+    marginBottom:30,
     backgroundColor: "rgba(255,255,255,0.2)",
     borderColor: "rgba(255,255,255,0.4)",
     borderWidth: 1,
@@ -516,3 +527,6 @@ const chunkArray = (entries, size = 4) => {
   }
   return rows;
 };
+
+const setKey = (key = "") =>
+  KEY_LABELS[key] ?? key.charAt(0).toUpperCase() + key.slice(1).toLowerCase();

@@ -50,9 +50,7 @@ export default function FormScreen() {
 
       router.push({
         pathname: "/result",
-        params: { data: JSON.stringify(result),
-                  input: JSON.stringify(form)
-         },
+        params: { data: JSON.stringify(result), input: JSON.stringify(form) },
       });
       // setForm(initialForm);
     } catch (err: any) {
@@ -170,11 +168,11 @@ export default function FormScreen() {
             color: "white",
           }}
         >
-          Belt Properties
+          Belt Properties (m)
         </Text>
 
         <Row>
-          <Col label="Length">
+          <Col label="Centre Distance">
             <TextInput
               placeholder="0.0 m"
               placeholderTextColor="#ddd"
@@ -196,7 +194,7 @@ export default function FormScreen() {
             />
           </Col>
 
-          <Col label="Thickness">
+          <Col label="Belt Thickness">
             <TextInput
               placeholder="0.0 m"
               placeholderTextColor="#ddd"
@@ -210,7 +208,7 @@ export default function FormScreen() {
 
         <Row>
           <Col label="Material Density">
-          <TextInput
+            <TextInput
               placeholder="0.0"
               placeholderTextColor="#ddd"
               value={form.density}
@@ -221,7 +219,7 @@ export default function FormScreen() {
           </Col>
 
           <Col label="Friction Coefficient">
-          <TextInput
+            <TextInput
               placeholder="0.0"
               placeholderTextColor="#ddd"
               value={form.friction}
